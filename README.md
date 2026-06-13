@@ -1,4 +1,3 @@
-# C
 # Praticando a Linguagem C
 
 Repositório criado para armazenar exercícios, desafios e projetos desenvolvidos durante meus estudos de programação em C.
