@@ -28,7 +28,7 @@ int main() {
         fgets(territorios[i].nome, 30, stdin);
 
         // Leitura da cor do exército
-        printf("Digite a cor do exercito: ");
+        printf("Digite a cor do exercito(ex: vermelho, amarelo): ");
         fgets(territorios[i].cor, 10, stdin);
 
         // Remove o '\n' capturado pelo fgets
@@ -48,7 +48,7 @@ int main() {
     for (int i = 0; i < 5; i++) {
         printf("\nTerritorio %d\n", i + 1);
         printf("Nome: %s\n", territorios[i].nome);
-        printf("Cor do exercito(ex: vermelho, amarelo): %s\n", territorios[i].cor);
+        printf("Cor do exercito: %s\n", territorios[i].cor);
         printf("Tropas: %d\n", territorios[i].tropas);
     }
 
