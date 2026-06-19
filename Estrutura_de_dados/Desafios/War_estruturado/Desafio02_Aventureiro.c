@@ -106,10 +106,16 @@ int main() {
     int atacante;
     int defensor;
 
+    do {
     exibirTerritorios(territorios, quantidade);
 
-    printf("\nEscolha o territorio atacante (1 a %d): ", quantidade);
+    printf("\nEscolha o territorio atacante (1 a %d) ou 0 para sair: ", quantidade);
     scanf("%d", &atacante);
+
+    if (atacante == 0) {
+        printf("\nEncerrando o jogo...\n");
+        break;
+    }
 
     printf("Escolha o territorio defensor (1 a %d): ", quantidade);
     scanf("%d", &defensor);
@@ -120,18 +126,23 @@ int main() {
     defensor--;
 
     if (atacante < 0 || atacante >= quantidade || defensor < 0 || defensor >= quantidade) {
-        printf("\nEscolha invalida de territorio.\n");
-        free(territorios);
-        return 1;
+        printf("\nEscolha invalida de territorio. Tente novamente.\n");
+        continue;
     }
 
     if (atacante == defensor) {
-        printf("\nO atacante e o defensor nao podem ser o mesmo territorio.\n");
-        free(territorios);
-        return 1;
+        printf("\nO atacante e o defensor nao podem ser o mesmo territorio. Tente novamente.\n");
+        continue;
+    }
+
+    if (territorios[atacante].tropas <= 0 || territorios[defensor].tropas <= 0) {
+        printf("\nTerritorios com 0 tropas nao podem atacar ou defender.\n");
+        continue;
     }
 
     atacar(&territorios[atacante], &territorios[defensor]);
+
+    } while (1); 
 
     // Exibição dos territórios cadastrados
     exibirTerritorios(territorios, quantidade);
